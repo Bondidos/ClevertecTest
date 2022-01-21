@@ -1,64 +1,24 @@
 fun main(args: Array<String>) {
 //    print(AnimalHelper().getAnimals())
-
-val actionHelper = ActionHelper()
-    val bear = Animal.Bear
-    bear.doAction(actionHelper.getAction())
-   // println(actionHelper.getAction().toString())
+    val action = ActionHelper().getAction()
+    val animal = Animal.Bear
+    animal.doAction(action)
 }
 
 sealed class Animal {
-    abstract fun doAction(action: Action)
-
-    object Bear : Animal() {
-        override fun doAction(action: Action) {
-            print("$this $action")
-        }
-
-        override fun toString(): String {
-            return "Bear"
-        }
+    fun doAction(action: Action) {
+        print("$this $action")
     }
 
-    object Duck : Animal() {
-        override fun doAction(action: Action) {
-            print(action)
-        }
-
-        override fun toString(): String {
-            return "Duck"
-        }
+    override fun toString(): String {
+        return this.javaClass.simpleName
     }
 
-    object Hummingbird : Animal() {
-        override fun doAction(action: Action) {
-            print(action)
-        }
-
-        override fun toString(): String {
-            return "Hummingbird"
-        }
-    }
-
-    object Wolf : Animal() {
-        override fun doAction(action: Action) {
-            print(action)
-        }
-
-        override fun toString(): String {
-            return "Wolf"
-        }
-    }
-
-    object Beaver : Animal() {
-        override fun doAction(action: Action) {
-            print(action)
-        }
-
-        override fun toString(): String {
-            return "Beaver"
-        }
-    }
+    object Bear : Animal()
+    object Duck : Animal()
+    object Hummingbird : Animal()
+    object Wolf : Animal()
+    object Beaver : Animal()
 
 }
 
@@ -71,7 +31,7 @@ class ActionHelper() {
         Action.Drink,
         Action.Swim,
         Action.Sleep,
-        Action.Hunting,
+        Action.Hunt,
         Action.Roar,
     )
 
@@ -105,47 +65,18 @@ class AnimalHelper() {
 }
 
 sealed class Action {
-    // сделать список действий и доставать рандомно в зависимости от того какой животное запрашивает
-    object Walk : Action(){
-        override fun toString(): String {
-            return "Walking"
-        }
-    }
-    object Fly : Action(){
-        override fun toString(): String {
-            return "Flying"
-        }
-    }
-    object Eat : Action(){
-        override fun toString(): String {
-            return "Eating"
-        }
-    }
-    object Drink : Action(){
-        override fun toString(): String {
-            return "Drinking"
-        }
-    }
-    object Swim : Action(){
-        override fun toString(): String {
-            return "Swimming"
-        }
-    }
-    object Sleep : Action(){
-        override fun toString(): String {
-            return "Sleeping"
-        }
-    }
-    object Hunting : Action(){
-        override fun toString(): String {
-            return "Hunting"
-        }
-    }
-    object Roar : Action(){
-        override fun toString(): String {
-            return "Roaring"
-        }
+
+    override fun toString(): String {
+        return this.javaClass.simpleName + "ing"
     }
 
+    object Walk : Action()
+    object Fly : Action()
+    object Eat : Action()
+    object Drink : Action()
+    object Swim : Action()
+    object Sleep : Action()
+    object Hunt : Action()
+    object Roar : Action()
 }
 
