@@ -1,6 +1,8 @@
-import Constants.DAY
-import Constants.EVENING
-import Constants.MORNING
+package test2
+
+import test2.Constants.DAY
+import test2.Constants.EVENING
+import test2.Constants.MORNING
 import kotlinx.coroutines.*
 
 private var isAlive = false

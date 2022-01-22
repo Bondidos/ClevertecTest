@@ -1,3 +1,5 @@
+package test2
+
 sealed class Animal {
     abstract val name: String
     fun doAction(action: Action) {

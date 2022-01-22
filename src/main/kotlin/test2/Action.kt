@@ -1,3 +1,5 @@
+package test2
+
 import java.util.*
 
 sealed class Action {

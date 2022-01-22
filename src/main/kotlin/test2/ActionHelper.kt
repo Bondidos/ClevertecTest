@@ -1,3 +1,5 @@
+package test2
+
 class ActionHelper {
     private val list = listOf(
         Action.Walk,
@@ -9,7 +11,5 @@ class ActionHelper {
         Action.Hunt,
         Action.Roar,
     )
-
     fun getAction() = list.random()
-
 }

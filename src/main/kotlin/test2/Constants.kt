@@ -1,3 +1,5 @@
+package test2
+
 object Constants {
     const val BEARS_NUMBER = 3
     const val DUCKS_NUMBER = 4

@@ -1,13 +1,15 @@
-import Constants.BEARS
-import Constants.BEARS_NUMBER
-import Constants.BEAVERS
-import Constants.BEAVERS_NUMBER
-import Constants.DUCKS
-import Constants.DUCKS_NUMBER
-import Constants.HUMMINGBIRDS
-import Constants.HUMMINGBIRDS_NUMBER
-import Constants.WOLFS
-import Constants.WOLFS_NUMBER
+package test2
+
+import test2.Constants.BEARS
+import test2.Constants.BEARS_NUMBER
+import test2.Constants.BEAVERS
+import test2.Constants.BEAVERS_NUMBER
+import test2.Constants.DUCKS
+import test2.Constants.DUCKS_NUMBER
+import test2.Constants.HUMMINGBIRDS
+import test2.Constants.HUMMINGBIRDS_NUMBER
+import test2.Constants.WOLFS
+import test2.Constants.WOLFS_NUMBER
 
 class AnimalHelper {
     private val list = mutableListOf<Animal>()
