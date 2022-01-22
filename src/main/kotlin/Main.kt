@@ -1,82 +1,41 @@
+import kotlinx.coroutines.*
+import java.lang.Runnable
+
+private var isAlive = true
+private val animalHelper = AnimalHelper()
+private val actionHelper = ActionHelper()
+private val animalList = animalHelper.getAnimals()
+
 fun main(args: Array<String>) {
-//    print(AnimalHelper().getAnimals())
-    val action = ActionHelper().getAction()
-    val animal = Animal.Bear
-    animal.doAction(action)
-}
+    while (isAlive) {
+//        CoroutineScope(Job()).launch {
+        doAction()
 
-sealed class Animal {
-    fun doAction(action: Action) {
-        print("$this $action")
+
+//        }
     }
-
-    override fun toString(): String {
-        return this.javaClass.simpleName
-    }
-
-    object Bear : Animal()
-    object Duck : Animal()
-    object Hummingbird : Animal()
-    object Wolf : Animal()
-    object Beaver : Animal()
 
 }
 
+private fun doAction() {
 
-class ActionHelper() {
-    private val list = listOf(
-        Action.Walk,
-        Action.Fly,
-        Action.Eat,
-        Action.Drink,
-        Action.Swim,
-        Action.Sleep,
-        Action.Hunt,
-        Action.Roar,
-    )
-
-    fun getAction() = list.random()
-
-}
-
-class AnimalHelper() {
-    private val list = mutableListOf<Animal>()
-
-    init {
-        createBears()
-        createBeavers()
-        createDucks()
-        createHummingbirds()
-        createWolfs()
-    }
-
-    private fun createBears() = createAnimal(3, Animal.Bear)
-    private fun createDucks() = createAnimal(4, Animal.Duck)
-    private fun createHummingbirds() = createAnimal(7, Animal.Hummingbird)
-    private fun createWolfs() = createAnimal(5, Animal.Wolf)
-    private fun createBeavers() = createAnimal(2, Animal.Beaver)
-    private fun createAnimal(number: Int, type: Animal) {
-        (1..number).forEach { _ ->
-            list.add(type)
+    animalList.forEach { animal ->
+        when(animal){
+            is Animal.Bear ->
+                animal.doAction(generateValidAction(animal))
+            is Animal.Wolf -> animal.doAction(generateValidAction(animal))
+            is Animal.Duck -> animal.doAction(generateValidAction(animal))
+            is Animal.Beaver -> animal.doAction(generateValidAction(animal))
+            is Animal.Hummingbird -> animal.doAction(generateValidAction(animal))
         }
     }
-
-    fun getAnimals() = list.toList().shuffled()
+    isAlive = false
 }
 
-sealed class Action {
-
-    override fun toString(): String {
-        return this.javaClass.simpleName + "ing"
+private fun generateValidAction(animal: Animal): Action{
+    var action = actionHelper.getAction()
+    while (animal.isActionAllowed(action)){
+        action= actionHelper.getAction()
     }
-
-    object Walk : Action()
-    object Fly : Action()
-    object Eat : Action()
-    object Drink : Action()
-    object Swim : Action()
-    object Sleep : Action()
-    object Hunt : Action()
-    object Roar : Action()
+    return action
 }
-
