@@ -6,11 +6,6 @@ sealed class Animal {
 
     abstract fun isActionAllowed(action: Action): Boolean
 
-    /*override fun toString(): String {
-//        return this.javaClass.simpleName
-        return this.name
-    }*/
-
     class Bear(private val animalName: String) : Animal() {
         private val nonAbleActions = listOf(
             Action.Fly

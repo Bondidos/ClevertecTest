@@ -10,4 +10,8 @@ object Constants {
     const val HUMMINGBIRDS = "Hummingbird"
     const val WOLFS = "Wolf"
     const val BEAVERS = "Beaver"
+
+    const val MORNING = 1
+    const val DAY = 2
+    const val EVENING = 3
 }
