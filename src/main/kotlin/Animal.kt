@@ -1,57 +1,69 @@
 sealed class Animal {
+    abstract val name: String
     fun doAction(action: Action) {
-        print("$this $action")
+        print("${this.name} $action")
     }
 
     abstract fun isActionAllowed(action: Action): Boolean
 
-    override fun toString(): String {
-        return this.javaClass.simpleName
-    }
+    /*override fun toString(): String {
+//        return this.javaClass.simpleName
+        return this.name
+    }*/
 
-    object Bear : Animal() {
+    class Bear(private val animalName: String) : Animal() {
         private val nonAbleActions = listOf(
             Action.Fly
         )
+        override val name: String
+            get() = animalName
 
         override fun isActionAllowed(action: Action) = nonAbleActions.contains(action)
     }
 
-    object Duck : Animal() {
+    class Duck(private val animalName: String) : Animal() {
         private val nonAbleActions = listOf(
             Action.Hunt,
             Action.Roar
         )
+        override val name: String
+            get() = animalName
 
         override fun isActionAllowed(action: Action) = nonAbleActions.contains(action)
     }
 
-    object Hummingbird : Animal() {
+    class Hummingbird(private val animalName: String) : Animal() {
         private val nonAbleActions = listOf(
             Action.Walk,
             Action.Swim,
             Action.Hunt,
             Action.Roar
         )
+        override val name: String
+            get() = animalName
 
         override fun isActionAllowed(action: Action) = nonAbleActions.contains(action)
     }
 
-    object Wolf : Animal() {
+    class Wolf(private val animalName: String) : Animal() {
         private val nonAbleActions = listOf(
             Action.Swim,
             Action.Fly
         )
+        override val name: String
+            get() = animalName
 
         override fun isActionAllowed(action: Action) = nonAbleActions.contains(action)
     }
 
-    object Beaver : Animal() {
+    class Beaver(private val animalName: String) : Animal() {
         private val nonAbleActions = listOf(
             Action.Hunt,
             Action.Roar,
             Action.Fly
         )
+        override val name: String
+            get() = animalName
 
         override fun isActionAllowed(action: Action) = nonAbleActions.contains(action)
     }

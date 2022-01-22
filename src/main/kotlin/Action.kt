@@ -1,7 +1,9 @@
+import java.util.*
+
 sealed class Action {
 
     override fun toString(): String {
-        return this.javaClass.simpleName + "ing " + "\n"
+        return "is "+this.javaClass.simpleName.lowercase(Locale.getDefault()) + "ing " + "\n"
     }
 
     object Walk : Action()
